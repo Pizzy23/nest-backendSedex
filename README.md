@@ -32,26 +32,26 @@ Teste na AWS:
 
 1. Localização de rua próxima a partir do CEP:
 
-- O usuário envia uma solicitação para a API com um CEP de referência.
-- O controller responsável pela localização da rua próxima ao CEP recebe a requisição.
-- A API utiliza o serviço de correios-brasil para consultar o endereço associado ao CEP fornecido pelo usuário.
-- Caso o endereço seja encontrado, a API utiliza o serviço de geocodificação (GeoCodeService) para obter as coordenadas geográficas (latitude e longitude) do endereço.
-- Em seguida, a API gera um novo CEP para a rua próxima utilizando regras específicas, como a concatenação dos primeiros dígitos do CEP original com um número aleatório.
-- O controller retorna ao usuário as informações da rua próxima, incluindo o novo CEP, o Plus Code associado às coordenadas e as próprias coordenadas geográficas.
+  - O usuário envia uma solicitação para a API com um CEP de referência.
+  - O controller responsável pela localização da rua próxima ao CEP recebe a requisição.
+  - A API utiliza o serviço de correios-brasil para consultar o endereço associado ao CEP fornecido pelo usuário.
+  - Caso o endereço seja encontrado, a API utiliza o serviço de geocodificação (GeoCodeService) para obter as coordenadas geográficas (latitude e longitude) do endereço.
+  - Em seguida, a API gera um novo CEP para a rua próxima utilizando regras específicas, como a concatenação dos primeiros dígitos do CEP original com um número aleatório.
+  - O controller retorna ao usuário as informações da rua próxima, incluindo o novo CEP, o Plus Code associado às coordenadas e as próprias coordenadas geográficas.
 
 2. Rota para obter o Plus Code do usuário:
 
-- O usuário faz uma solicitação para a API através da rota correspondente.
-- O controller responsável pelo Plus Code recebe a requisição.
-- A API utiliza o serviço de geocodificação (GeoCodeService) para obter as coordenadas geográficas (latitude e longitude) do usuário, que pode ser fornecida pelo frontend ou obtida de outra forma.
-- O controller retorna ao usuário o Plus Code associado às coordenadas fornecidas.
+  - O usuário faz uma solicitação para a API através da rota correspondente.
+  - O controller responsável pelo Plus Code recebe a requisição.
+  - A API utiliza o serviço de geocodificação (GeoCodeService) para obter as coordenadas geográficas (latitude e longitude) do usuário, que pode ser fornecida pelo frontend ou obtida de outra forma.
+  - O controller retorna ao usuário o Plus Code associado às coordenadas fornecidas.
 
 3. Rota para obter as coordenadas do usuário:
 
-- O usuário faz uma solicitação para a API através da rota correspondente.
-- O controller responsável pelas coordenadas recebe a requisição.
-- A API recebe as coordenadas geográficas (latitude e longitude) do usuário, fornecidas pelo frontend ou por outra fonte.
-- O controller retorna ao usuário as coordenadas geográficas recebidas.
+  - O usuário faz uma solicitação para a API através da rota correspondente.
+  - O controller responsável pelas coordenadas recebe a requisição.
+  - A API recebe as coordenadas geográficas (latitude e longitude) do usuário, fornecidas pelo frontend ou por outra fonte.
+  - O controller retorna ao usuário as coordenadas geográficas recebidas.
 
 Esses casos de uso refletem como a API funciona para fornecer informações de localização e CEPs com base em diferentes inputs do usuário. Ela oferece a possibilidade de localizar a rua próxima a partir de um CEP, obter o Plus Code do usuário e também receber e retornar coordenadas geográficas. Isso proporciona uma experiência completa e flexível para os usuários que desejam acessar informações de localização precisas e atualizadas em suas aplicações e sistemas.
 
