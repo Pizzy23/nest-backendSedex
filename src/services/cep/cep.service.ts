@@ -31,8 +31,8 @@ export class CepService extends BaseService {
         },
         status: 200,
       };
-
     } catch (e) {
+      console.log(e);
       throw new HttpException('message', 500, {
         cause: new Error(e.message),
       });
