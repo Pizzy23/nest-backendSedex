@@ -31,6 +31,7 @@ export class CepService extends BaseService {
         },
         status: 200,
       };
+
     } catch (e) {
       throw new HttpException('message', 500, {
         cause: new Error(e.message),
@@ -44,7 +45,7 @@ export class CepService extends BaseService {
     const randomString = random.toString();
     const newCep = firtsNumbers + randomString;
     const cepConfirm = await this.getAdressByCep(newCep);
-    if (cepConfirm.erro != true) {
+    if (cepConfirm.erro != 'true') {
       return await this.createNewCep(cep);
     }
     const cepFormat = newCep.slice(0, 5) + '-' + newCep.slice(5);
