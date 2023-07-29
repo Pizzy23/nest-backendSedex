@@ -1,4 +1,4 @@
-import { Controller, Get, Headers } from '@nestjs/common';
+import { Controller, Get, Headers, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CallDto, PlusDto } from 'src/dto/cep/cep-dto';
 import { StringResDTO } from 'src/dto/response/response-dto';
@@ -15,7 +15,7 @@ export class CepController {
   @ApiOperation({
     summary: 'Create new CEP',
   })
-  @Get('/cep')
+  @Post('/cep')
   async getNewCep(@Headers() input: CallDto) {
     return await this.cep.calls(input);
   }
@@ -23,7 +23,7 @@ export class CepController {
   @ApiOperation({
     summary: 'Input your adress and get your PlusCode',
   })
-  @Get('/plus')
+  @Post('/plus')
   async getPlusCode(@Headers() input: CallDto) {
     return await this.geo.plusCode(input.adress);
   }
@@ -31,7 +31,7 @@ export class CepController {
   @ApiOperation({
     summary: 'Input coords by user and get your PlusCode',
   })
-  @Get('/coords')
+  @Post('/coords')
    getPlusCodeByCoords(@Headers() input: PlusDto) {
     return  this.geo.encodePlusCode(input.lat, input.long);
   }
