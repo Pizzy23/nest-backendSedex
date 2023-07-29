@@ -32,7 +32,6 @@ export class CepService extends BaseService {
         status: 200,
       };
     } catch (e) {
-      console.log(e);
       throw new HttpException('message', 500, {
         cause: new Error(e.message),
       });
@@ -40,16 +39,20 @@ export class CepService extends BaseService {
   }
 
   async createNewCep(cep: string) {
-    const firtsNumbers = cep.slice(0, 3);
-    const random = Math.floor(Math.random() * 90000) + 10000;
-    const randomString = random.toString();
-    const newCep = firtsNumbers + randomString;
-    const cepConfirm = await this.getAdressByCep(newCep);
-    if (cepConfirm.erro != 'true') {
-      return await this.createNewCep(cep);
-    }
-    const cepFormat = newCep.slice(0, 5) + '-' + newCep.slice(5);
+    try {
+      const firtsNumbers = cep.slice(0, 3);
+      const random = Math.floor(Math.random() * 90000) + 10000;
+      const randomString = random.toString();
+      const newCep = firtsNumbers + randomString;
+      const cepConfirm = await this.getAdressByCep(newCep);
+      if (cepConfirm.erro != 'true') {
+        return await this.createNewCep(cep);
+      }
+      const cepFormat = newCep.slice(0, 5) + '-' + newCep.slice(5);
 
-    return cepFormat;
+      return cepFormat;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
